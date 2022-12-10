@@ -1,0 +1,35 @@
+.edit_section {
+  display: flex;
+}
+.add_new_todo_button{
+  padding-right: 10px;
+}
+.sort_status_button{
+  padding-right: 10px;
+}
+.action_buttons {
+  display: flex;
+}
+.edit_icon {
+  margin-right: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.edit_icon:hover {
+  background-color: rgba(206, 255, 0, 0.5);
+}
+.delete_icon {
+  border-radius: 10px;
+  cursor: pointer;
+}
+.delete_icon:hover {
+  background-color: rgba(206, 255, 0, 0.5);
+}
+.todolist {
+  z-index: 2;
+}
+
+.open_detail_page:hover {
+  color: rgb(181, 218, 34);
+}
+

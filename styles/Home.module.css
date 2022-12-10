@@ -1,0 +1,20 @@
+.edit_section {
+  display: flex;
+  padding: 20px 20px 0 20px;
+}
+.add_new_todo_button{
+  padding-right: 10px;
+}
+.sort_status_button{
+  padding-right: 10px;
+}
+.action_buttons {
+  display: flex;
+}
+.edit_icon {
+  padding-right: 10px;
+}
+
+.todolist {
+  z-index: 2;
+}
