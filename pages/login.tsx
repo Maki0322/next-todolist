@@ -7,13 +7,16 @@ import { Box, Button, Center, FormLabel, Input, Text, Grid, GridItem } from '@ch
 
 import styles from '../styles/login.module.css'
 import { firebaseApp } from '../src/store/firebase'
+import { useSetRecoilState } from 'recoil'
+import { userAuthState } from '../src/store/auth'
 
 
-const login = () => {
+const Login = () => {
   const router = useRouter();
   const auth = getAuth();
 
   const [error, setError] = useState('');
+  const setUserAuth = useSetRecoilState(userAuthState)
 
   // emailでログインするための関数
   const handleEmailLogin = async(event: any) => {
@@ -21,6 +24,7 @@ const login = () => {
     const { email, password } = event.currentTarget.elements;
     signInWithEmailAndPassword(auth, email.value, password.value)
     .then((user) => {
+      setUserAuth(user.user.uid !== "")
       router.push("/")
       console.log('ログイン成功=', user.user.uid)
     })
@@ -46,9 +50,9 @@ const login = () => {
   const handleGoogleLogin = async(event: any) => {
     event.preventDefault();
     const provider = new GoogleAuthProvider();
-    const auth = getAuth(firebaseApp);
     signInWithPopup(auth, provider)
     .then((result) => {
+      setUserAuth(result.user.uid !== "")
       router.push("/")
       console.log('ログイン成功=', result.user.uid)
     }).catch((error) => {
@@ -147,4 +151,4 @@ const login = () => {
   )
 }
 
-export default login
+export default Login

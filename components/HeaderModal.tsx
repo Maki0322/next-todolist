@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router';
-import { useRecoilState} from 'recoil';
+import { useRecoilState, useSetRecoilState} from 'recoil';
 import { doc, getDoc, onSnapshot, setDoc } from 'firebase/firestore';
 import { getAuth, signOut } from 'firebase/auth';
 
@@ -12,6 +12,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { db, firebaseApp} from '../src/store/firebase';
 import { profileState } from '../src/status/profileState';
 import styles from '../styles/Header.module.css'
+import { userAuthState } from '../src/store/auth';
 
 
 type Props = {
@@ -22,6 +23,7 @@ type Props = {
 const HeaderModal = ({modalShow}:Props) => {
   const router = useRouter();
   const auth = getAuth(firebaseApp);
+  const setUserAuth = useSetRecoilState(userAuthState)
 
   // プロフィール情報をuseRecoilで管理
   const [profile, setProfile] = useRecoilState<any>(profileState)
@@ -80,7 +82,8 @@ const HeaderModal = ({modalShow}:Props) => {
   // ログアウトする関数
   const handleLogout = async () => {
     await signOut(auth)
-    await router.push("/login")
+    setUserAuth(false)
+    router.push("/login")
   };
   
 

@@ -1,26 +1,19 @@
-import { RecoilRoot } from 'recoil'
-import type { AppProps } from 'next/app'
-import { ChakraProvider } from '@chakra-ui/react'
-import { useAuth } from '../src/store/auth'
-import '../styles/globals.css'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-
+import { RecoilRoot } from "recoil";
+import type { AppProps } from "next/app";
+import { ChakraProvider } from "@chakra-ui/react";
+import { useAuth } from "../src/store/auth";
+import "../styles/globals.css";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 type Props = {
   children: JSX.Element;
-}
-
-const Auth = ({children}: Props): JSX.Element => {
-  const {isLoading, user} = useAuth();
-  const router = useRouter();
-  useEffect(() => {
-    if (user) return;
-    router.push("/login")
-  },[])
-  return isLoading ? <p>Loading...</p> : children;
 };
 
+const Auth = ({ children }: Props): JSX.Element => {
+  const { isLoading } = useAuth();
+  return isLoading ? <p>Loading...</p> : children;
+};
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -31,5 +24,5 @@ export default function App({ Component, pageProps }: AppProps) {
         </ChakraProvider>
       </Auth>
     </RecoilRoot>
-  )
+  );
 }

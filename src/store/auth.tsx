@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { atom, useRecoilState, useSetRecoilState  } from "recoil";
+import { atom, useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
-import { firebaseApp } from "./firebase";
-import 'firebase/auth'
+import { auth, firebaseApp } from "./firebase";
+import "firebase/auth";
 
 type UserState = User | null;
 
@@ -12,18 +12,27 @@ const userState = atom<UserState>({
   dangerouslyAllowMutability: true,
 });
 
+export const userAuthState = atom<boolean>({
+  key: "userAuthState",
+  default: false,
+})
+
 export const useAuth = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [user, setUser] = useRecoilState(userState);
+  const setUser = useSetRecoilState(userState);
+  const setUserAuth = useSetRecoilState(userAuthState);
 
   useEffect(() => {
-    const auth = getAuth(firebaseApp);
-    return onAuthStateChanged(auth, async (user) => {
+    onAuthStateChanged(auth, async (user) => {
+      if (user === null) return
+      setUserAuth(user.uid !== "")
       setUser(user);
       setIsLoading(false);
-    })
+    });
+    setIsLoading(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  return {isLoading, user};
+  return { isLoading };
 };
 
 // export const useUser = (): UserState => {
