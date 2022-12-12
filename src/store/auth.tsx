@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { atom, useSetRecoilState  } from "recoil";
+import { atom, useRecoilState, useSetRecoilState  } from "recoil";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import { firebaseApp } from "./firebase";
 import 'firebase/auth'
@@ -12,9 +12,9 @@ const userState = atom<UserState>({
   dangerouslyAllowMutability: true,
 });
 
-export const useAuth = ():boolean => {
+export const useAuth = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const setUser = useSetRecoilState(userState);
+  const [user, setUser] = useRecoilState(userState);
 
   useEffect(() => {
     const auth = getAuth(firebaseApp);
@@ -22,9 +22,8 @@ export const useAuth = ():boolean => {
       setUser(user);
       setIsLoading(false);
     })
-  }, [setUser]);
-  
-  return isLoading;
+  }, []);
+  return {isLoading, user};
 };
 
 // export const useUser = (): UserState => {
