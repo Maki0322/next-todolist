@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useRecoilState, useRecoilValue} from 'recoil';
 
 import { Center, HStack, Text, VStack } from '@chakra-ui/react';
+import { styled } from '@mui/system';
 import PersonIcon from '@mui/icons-material/Person';
 import EditIcon from '@mui/icons-material/Edit';
 
@@ -11,13 +12,23 @@ import SettingModal from '../components/SettingModal';
 import { modalShowState } from '../src/status/modalShowState';
 import { profileState } from '../src/status/profileState';
 
+const MyEditIcon = styled(EditIcon)({
+  cursor: "pointer",
+  borderRadius:"10px",
+  fontSize:"32px",
+  padding:"5px",
+  "&:hover": {
+    backgroundColor: "rgba(206, 255, 0, 0.5)",
+  }
+})
+
 
 const setting: React.FC  = () => {
   // recoilで管理しているプロフィール情報を読み取って関数に設定
   const profile = useRecoilValue<any>(profileState);
 
   // プロフィール編集のモーダルウィンドウの開閉を管理
-  const [settingModalShow, setSettingModalShow] = useState(false)
+  const [settingModalShow, setSettingModalShow] = useState<boolean>(false)
 
   // プロフィールのモーダルウィンドウを開く関数
   const openProfile = () => {
@@ -29,7 +40,7 @@ const setting: React.FC  = () => {
   }
 
   // 別の場所をクリックしてもモーダルウィンドウを閉じる関数
-  const[modalShow, setModalShow] = useRecoilState(modalShowState);
+  const [modalShow, setModalShow] = useRecoilState(modalShowState);
   const closeModalShow = () => {
     if(modalShow === true){
       setModalShow(false);
@@ -57,7 +68,7 @@ const setting: React.FC  = () => {
           />
           <HStack>
             <Text fontSize="3xl">{profile.userName}</Text>
-            <EditIcon onClick={openProfile}/>
+            <MyEditIcon onClick={openProfile}/>
           </HStack>
           <Text fontSize="xl">{profile.memo}</Text>
         </VStack>
