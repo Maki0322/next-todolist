@@ -115,86 +115,91 @@ const Home  = () => {
       </Head>
 
       <div onClick={closeModalShow}>
-        <Header />
-        <Center p="20px 20px 0 20px">
-          <Flex w="1080px">
+        <Box w="100%" position="fixed" zIndex="150" top="0" left="0">
+          <Header />
+        </Box>
+        <Box mt="45px">
+          <Center p="20px 20px 0 20px">
+            <Flex w="1080px">
 
-          {/* STATUSフィルターの部分 */}
-            <Box pr="10px">
-              <Text fontSize="sm">STATUS</Text>
-              <Select 
-                size='sm' 
-                w="150px"
-                value={filterStatusTodo}
-                onChange={handleChangeFilterStatus}
-                >
-                {filterStatus.map((state) => (
-                  <option key={state} value={state}>
-                      {state}
-                    </option>
-                  ))}
-              </Select>
-            </Box>
-
-            {/* PRIORITYフィルターの部分 */}
-            <Box>
-              <Text fontSize="sm">PRIORITY</Text>
-              <Select 
-                size='sm' 
-                w="150px"
-                value={filterPriorityTodo}
-                onChange={handleChangePriority}
-                >
-                {filterPriority.map((state) => (
-                  <option key={state} value={state}>
-                      {state}
-                    </option>
-                  ))}
-              </Select>
-            </Box>
-
-            <Spacer />
-            
-            {/* 新規TODO追加ボタンの部分 */}
-            <Box>
-              <Link href={"/add_todo"}>
-                <Button 
-                  leftIcon={<AddIcon fontSize="10px"/>}
-                  color="black" 
-                  variant='outline' 
-                  _hover={{backgroundColor: "rgba(206, 255, 0, 0.5)"}}
-                  size='sm'
+            {/* STATUSフィルターの部分 */}
+              <Box pr="10px">
+                <Text fontSize="sm">STATUS</Text>
+                <Select 
+                  size='sm' 
+                  w="150px"
+                  value={filterStatusTodo}
+                  onChange={handleChangeFilterStatus}
                   >
-                  新規TODO
-                </Button>
-              </Link>
-            </Box>
-            
-          </Flex>
-        </Center>
+                  {filterStatus.map((state) => (
+                    <option key={state} value={state}>
+                        {state}
+                      </option>
+                    ))}
+                </Select>
+              </Box>
 
-        {/* TODOリスト部分 */}
-        <div className={styles.todolist}>
-          <Center>
-            <TableContainer w="1080px" border="solid 1px rgb(195,195, 195)" m={"20px"}>
-              <Table variant='simple'>
-                <TodoListHead />
-                {filteredTodoLists.map((todo:Task) => (  
-                  <TodoListLine 
-                    text={todo.text}
-                    limit={todo.limit}
-                    id={todo.id}
-                    status={todo.status}
-                    priority={todo.priority}
-                    key={todo.id}
-                    detail={todo.detail}
-                    createdAt={todo.createdAt}
-                  />
-                ))} 
-              </Table>
-            </TableContainer>
+              {/* PRIORITYフィルターの部分 */}
+              <Box>
+                <Text fontSize="sm">PRIORITY</Text>
+                <Select 
+                  size='sm' 
+                  w="150px"
+                  value={filterPriorityTodo}
+                  onChange={handleChangePriority}
+                  >
+                  {filterPriority.map((state) => (
+                    <option key={state} value={state}>
+                        {state}
+                      </option>
+                    ))}
+                </Select>
+              </Box>
+
+              <Spacer />
+              
+              {/* 新規TODO追加ボタンの部分 */}
+              <Box>
+                <Link href={"/add_todo"}>
+                  <Button 
+                    leftIcon={<AddIcon fontSize="10px"/>}
+                    color="black" 
+                    variant='outline' 
+                    _hover={{backgroundColor: "rgba(206, 255, 0, 0.5)"}}
+                    size='sm'
+                    >
+                    新規TODO
+                  </Button>
+                </Link>
+              </Box>
+              
+            </Flex>
           </Center>
-        </div>
+
+          {/* TODOリスト部分 */}
+          <div className={styles.todolist}>
+            <Center>
+              <TableContainer w="1080px" border="solid 1px rgb(195,195, 195)" m={"20px"}>
+                <Table variant='simple'>
+                  <TodoListHead />
+                  {filteredTodoLists.map((todo:Task) => (  
+                    <TodoListLine 
+                      text={todo.text}
+                      limit={todo.limit}
+                      id={todo.id}
+                      status={todo.status}
+                      priority={todo.priority}
+                      key={todo.id}
+                      detail={todo.detail}
+                      createdAt={todo.createdAt}
+                    />
+                  ))} 
+                </Table>
+              </TableContainer>
+            </Center>
+          </div>
+
+        </Box>
       </div>
     </>
   )
