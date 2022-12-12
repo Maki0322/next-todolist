@@ -23,7 +23,7 @@ const MyEditIcon = styled(EditIcon)({
 })
 
 
-const setting: React.FC  = () => {
+const Setting: React.FC  = () => {
   // recoilで管理しているプロフィール情報を読み取って関数に設定
   const profile = useRecoilValue<any>(profileState);
 
@@ -81,4 +81,4 @@ const setting: React.FC  = () => {
   )
 }
 
-export default setting
+export default Setting

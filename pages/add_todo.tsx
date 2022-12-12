@@ -6,7 +6,7 @@ import Header from '../components/Header'
 import { modalShowState } from '../src/status/modalShowState';
 
 
-const add_todo = () => {
+const AddTodo = () => {
   // 別の場所をクリックしてもモーダルウィンドウを閉じる
   const[modalShow, setModalShow] = useRecoilState(modalShowState);
   const closeModalShow = () => {
@@ -22,4 +22,4 @@ const add_todo = () => {
   )
 }
 
-export default add_todo
+export default AddTodo

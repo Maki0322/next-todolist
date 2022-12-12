@@ -22,7 +22,7 @@ type ToEditInfo = {
 }
 
 
-const detail_todo = () => {
+const DetailTodo = () => {
   const router = useRouter();
   // 編集ページに渡すprops
   const toEditInfo:ToEditInfo = {
@@ -184,4 +184,4 @@ const detail_todo = () => {
   )
 }
 
-export default detail_todo
+export default DetailTodo
