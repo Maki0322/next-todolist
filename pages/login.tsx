@@ -1,20 +1,11 @@
-import { NextPage } from 'next'
 import Link from 'next/link'
-import React, { useState } from 'react'
-import styles from '../styles/login.module.css'
-import {
-  Box,
- Button,
- Center,
- Flex,
- FormLabel,
- Highlight,
- Input,
- Text,
- Grid, GridItem,
-} from '@chakra-ui/react'
 import { useRouter } from 'next/router'
+import React, { useState } from 'react'
 import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signInWithRedirect } from 'firebase/auth'
+
+import { Box, Button, Center, FormLabel, Input, Text, Grid, GridItem } from '@chakra-ui/react'
+
+import styles from '../styles/login.module.css'
 import { firebaseApp } from '../src/store/firebase'
 
 

@@ -1,17 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
-import styles from '../styles/signup.module.css'
-import { useState } from 'react';
 import { useRouter } from 'next/router'
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
-import {
-  FormLabel,
-  Input,
-  Button,
-  Text,
-  Box,
-  Center,
-} from '@chakra-ui/react'
+
+import {  FormLabel, Input, Button, Text, Box, Center } from '@chakra-ui/react'
+
+import styles from '../styles/signup.module.css'
 
 const signup = () => {
   const auth = getAuth();
@@ -28,7 +22,6 @@ const signup = () => {
     .catch((error) => {
       alert(error.message)
     }); 
-
   };
 
   return (
