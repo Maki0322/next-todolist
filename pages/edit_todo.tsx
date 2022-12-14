@@ -5,7 +5,7 @@ import EditInputForm from '../components/EditInputform'
 import Header from '../components/Header'
 import { modalShowState } from '../src/status/modalShowState';
 
-const edit_todo = () => {
+const EditTodo = () => {
   // 別の場所をクリックしてもモーダルウィンドウを閉じる
   const[modalShow, setModalShow] = useRecoilState(modalShowState);
   const closeModalShow = () => {
@@ -22,4 +22,4 @@ const edit_todo = () => {
   )
 }
 
-export default edit_todo
+export default EditTodo

@@ -7,7 +7,7 @@ import {  FormLabel, Input, Button, Text, Box, Center } from '@chakra-ui/react'
 
 import styles from '../styles/signup.module.css'
 
-const signup = () => {
+const Signup = () => {
   const auth = getAuth();
   const router = useRouter();
 
@@ -82,4 +82,4 @@ const signup = () => {
   )
 } 
 
-export default signup
+export default Signup
