@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { atom, useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { User, getAuth, onAuthStateChanged } from "firebase/auth";
-import { auth, firebaseApp } from "./firebase";
+import { atom, useSetRecoilState } from "recoil";
+import { User, onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase";
 import "firebase/auth";
 
 type UserState = User | null;
@@ -34,7 +34,3 @@ export const useAuth = () => {
   }, []);
   return { isLoading };
 };
-
-// export const useUser = (): UserState => {
-//   return useRecoilValue(userState);
-// };

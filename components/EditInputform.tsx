@@ -10,7 +10,6 @@ import styles from '../styles/Inputform.module.css'
 interface Props {
   title :string;
 }
-type TodoPriority = "高" | "中" | "低" 
 
 
 const EditInputForm = ({title}:Props) => {

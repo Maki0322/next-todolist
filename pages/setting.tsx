@@ -12,6 +12,7 @@ import SettingModal from '../components/SettingModal';
 import { modalShowState } from '../src/status/modalShowState';
 import { profileState } from '../src/status/profileState';
 
+
 const MyEditIcon = styled(EditIcon)({
   cursor: "pointer",
   borderRadius:"10px",

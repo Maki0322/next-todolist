@@ -7,6 +7,7 @@ import {  FormLabel, Input, Button, Text, Box, Center } from '@chakra-ui/react'
 
 import styles from '../styles/signup.module.css'
 
+
 const Signup = () => {
   const auth = getAuth();
   const router = useRouter();

@@ -3,12 +3,12 @@ import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
 import { useAuth } from "../src/store/auth";
 import "../styles/globals.css";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
+
 
 type Props = {
   children: JSX.Element;
 };
+
 
 const Auth = ({ children }: Props): JSX.Element => {
   const { isLoading } = useAuth();

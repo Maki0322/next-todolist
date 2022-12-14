@@ -6,7 +6,6 @@ import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopu
 import { Box, Button, Center, FormLabel, Input, Text, Grid, GridItem } from '@chakra-ui/react'
 
 import styles from '../styles/login.module.css'
-import { firebaseApp } from '../src/store/firebase'
 import { useSetRecoilState } from 'recoil'
 import { userAuthState } from '../src/store/auth'
 

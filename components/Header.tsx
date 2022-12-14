@@ -7,7 +7,7 @@ import { modalShowState } from "../src/status/modalShowState";
 import styles from "../styles/Header.module.css";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { useAuth, userAuthState } from "../src/store/auth";
+import { userAuthState } from "../src/store/auth";
 
 const Header = () => {
   // ヘッダーのモーダルの値をrecoilで管理
